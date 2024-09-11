@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ItemModel {
+class ItemModel extends ChangeNotifier {
   final String name;
   final double price;
   final Color color;

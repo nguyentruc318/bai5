@@ -15,6 +15,17 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setQuantity(ItemModel item, int quantity) {
+    if (cartItem.contains(item)) {
+      if (quantity <= 0) {
+        cartItem.remove(item);
+      } else {
+        item.quantity = quantity;
+      }
+      notifyListeners();
+    }
+  }
+
   void removeItem(ItemModel item) {
     if (item.quantity >= 1) {
       item.quantity--;
@@ -28,5 +39,9 @@ class CartProvider extends ChangeNotifier {
   void reset() {
     cartItem.clear();
     notifyListeners();
+  }
+
+  int getItemQuantity(ItemModel item) {
+    return item.quantity;
   }
 }
